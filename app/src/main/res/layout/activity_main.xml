@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+
+            <TextView
+                android:id="@+id/score"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/margin_left_right"
+                android:layout_marginTop="30dp"
+                android:layout_marginRight="@dimen/margin_left_right"
+                android:layout_marginBottom="3dp"
+                android:background="@drawable/score_bc"
+                android:gravity="center"
+                android:text="Score : 0"
+                android:textColor="@color/black"
+                android:textSize="22dp"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/margin_left_right"
+                android:layout_marginRight="@dimen/margin_left_right"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:id="@+id/zeroZero"
+                    android:layout_width="wrap_content"
+                    android:layout_height="180dp"
+                    android:layout_weight="1"
+                    android:background="@color/zeroZeroColor"
+                    android:orientation="vertical" />
+
+                <LinearLayout
+                    android:id="@+id/zeroOne"
+                    android:layout_width="wrap_content"
+                    android:layout_height="180dp"
+                    android:layout_weight="1"
+                    android:background="@color/zeroOneColor"
+                    android:orientation="vertical" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/margin_left_right"
+                android:layout_marginRight="@dimen/margin_left_right"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:id="@+id/oneZero"
+                    android:layout_width="wrap_content"
+                    android:layout_height="180dp"
+                    android:layout_weight="1"
+                    android:background="@color/oneZeroColor"
+                    android:orientation="vertical" />
+
+                <LinearLayout
+                    android:id="@+id/oneOne"
+                    android:layout_width="wrap_content"
+                    android:layout_height="180dp"
+                    android:layout_weight="1"
+                    android:background="@color/oneOneColor"
+                    android:orientation="vertical" />
+
+            </LinearLayout>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/start"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+                android:background="#024405"
+                android:text="Start"
+                android:textColor="@color/white" />
+
+
+
+        </LinearLayout>
+
+
+    </ScrollView>
+
+</LinearLayout>
