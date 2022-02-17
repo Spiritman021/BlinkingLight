@@ -61,7 +61,465 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    public static int generateRandom() {
+
+
+        int rand = (int) (Math.random() * 4);
+
+
+        return rand;
+    }
+
+//    public static int checkRandom(int value, int previousValue){
+//
+//
+//        if (value == previousValue) {
+//            int rand = generateRandom();
+//
+//            checkRandom(rand,previousValue);
+//        }
+//        return ;
+//    }
+
     private void startGame3(boolean status) {
+
+
+        final int[] rand = new int[1];
+
+        final int[] myScore = {-1};
+
+        if (status) {
+
+            final int[] prevRand = {0};
+
+
+            timer.schedule(new TimerTask() {
+                @Override
+                public void run() {
+
+                    myScore[0] = myScore[0] + 1;
+
+
+                    if (myScore[0] > scoreCard) {
+
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                zeroZero.setBackgroundColor(getResources().getColor(R.color.zeroZeroColor));
+                                zeroOne.setBackgroundColor(getResources().getColor(R.color.zeroOneColor));
+                                oneZero.setBackgroundColor(getResources().getColor(R.color.oneZeroColor));
+                                oneOne.setBackgroundColor(getResources().getColor(R.color.oneOneColor));
+
+
+                                activeStatus = false;
+                                score.setText("Game Over - Your Score was : " + scoreCard);
+
+                                showDialog("Your Score was : " + scoreCard);
+
+                                timer.cancel();
+                                scoreCard = 0;
+                                Toast.makeText(MainActivity.this, "Game Over", Toast.LENGTH_SHORT).show();
+
+                            }
+                        });
+
+                    } else {
+
+                        int[] newRand = {0};
+
+                        rand[0] = generateRandom();
+
+                        if (rand[0] != prevRand[0]) {
+
+
+                            prevRand[0] = rand[0];
+                            newRand[0] = rand[0];
+
+                        }
+                        else {
+
+//                            runOnUiThread(new Runnable() {
+//                                @Override
+//                                public void run() {
+//                                    Toast.makeText(MainActivity.this, "Random Repeated", Toast.LENGTH_SHORT).show();
+//                                }
+//                            });
+//
+                            while (true) {
+//
+                                int newRandom = generateRandom();
+
+                                if (newRandom != prevRand[0]) {
+
+                                    Log.d("PreviousRand","here : " + newRandom + " & " + prevRand[0]);
+                                    newRand[0] = newRandom;
+                                    prevRand[0] = newRandom;
+
+                                    break;
+                                }
+
+
+                            }
+
+
+
+
+                            
+                        }
+                        Log.d("PreviousRand1234","here : " + " & " + prevRand[0] + " & " + newRand[0]);
+
+                        Log.d("RandomValue", String.valueOf(rand[0]));
+
+
+                        if (newRand[0] == 0) {
+                            zeroZero.setBackgroundColor(getResources().getColor(R.color.grayColor));
+                            zeroOne.setBackgroundColor(getResources().getColor(R.color.zeroOneColor));
+                            oneZero.setBackgroundColor(getResources().getColor(R.color.oneZeroColor));
+                            oneOne.setBackgroundColor(getResources().getColor(R.color.oneOneColor));
+
+
+                            runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+
+                                    if (activeStatus == true) {
+
+
+                                        zeroZero.setOnClickListener(new View.OnClickListener() {
+                                            @Override
+                                            public void onClick(View v) {
+
+                                                zeroZero.setBackgroundColor(getResources().getColor(R.color.zeroZeroColor));
+                                                zeroOne.setBackgroundColor(getResources().getColor(R.color.zeroOneColor));
+                                                oneZero.setBackgroundColor(getResources().getColor(R.color.oneZeroColor));
+                                                oneOne.setBackgroundColor(getResources().getColor(R.color.oneOneColor));
+
+
+//                                        Toast.makeText(MainActivity.this, "Good", Toast.LENGTH_SHORT).show();
+                                                scoreCard = scoreCard + 1;
+                                                score.setText("Score : " + scoreCard);
+
+//                                                myScore[0] = ++scoreCard;
+//                                                score.setText("Score : " + myScore[0]);
+
+
+                                            }
+                                        });
+
+
+                                        zeroOne.setOnClickListener(new View.OnClickListener() {
+                                            @Override
+                                            public void onClick(View v) {
+
+//                                            rand[0] = 6;
+                                                zeroZero.setBackgroundColor(getResources().getColor(R.color.zeroZeroColor));
+                                                zeroOne.setBackgroundColor(getResources().getColor(R.color.zeroOneColor));
+                                                oneZero.setBackgroundColor(getResources().getColor(R.color.oneZeroColor));
+                                                oneOne.setBackgroundColor(getResources().getColor(R.color.oneOneColor));
+
+
+                                                activeStatus = false;
+                                                score.setText("Game Over - Your Score was : " + scoreCard);
+
+                                                showDialog("Your Score was : " + scoreCard);
+
+                                                timer.cancel();
+                                                scoreCard = 0;
+                                                Toast.makeText(MainActivity.this, "Game Over", Toast.LENGTH_SHORT).show();
+                                            }
+                                        });
+                                        oneZero.setOnClickListener(new View.OnClickListener() {
+                                            @Override
+                                            public void onClick(View v) {
+
+//                                            rand[0] = 6;
+                                                zeroZero.setBackgroundColor(getResources().getColor(R.color.zeroZeroColor));
+                                                zeroOne.setBackgroundColor(getResources().getColor(R.color.zeroOneColor));
+                                                oneZero.setBackgroundColor(getResources().getColor(R.color.oneZeroColor));
+                                                oneOne.setBackgroundColor(getResources().getColor(R.color.oneOneColor));
+
+
+                                                activeStatus = false;
+                                                score.setText("Game Over - Your Score was : " + scoreCard);
+
+                                                showDialog("Your Score was : " + scoreCard);
+
+                                                timer.cancel();
+                                                scoreCard = 0;
+                                                Toast.makeText(MainActivity.this, "Game Over", Toast.LENGTH_SHORT).show();
+                                            }
+                                        });
+                                        oneOne.setOnClickListener(new View.OnClickListener() {
+                                            @Override
+                                            public void onClick(View v) {
+
+//                                            rand[0] = 6;
+                                                zeroZero.setBackgroundColor(getResources().getColor(R.color.zeroZeroColor));
+                                                zeroOne.setBackgroundColor(getResources().getColor(R.color.zeroOneColor));
+                                                oneZero.setBackgroundColor(getResources().getColor(R.color.oneZeroColor));
+                                                oneOne.setBackgroundColor(getResources().getColor(R.color.oneOneColor));
+
+
+                                                activeStatus = false;
+                                                score.setText("Game Over - Your Score was : " + scoreCard);
+
+                                                showDialog("Your Score was : " + scoreCard);
+
+                                                timer.cancel();
+                                                scoreCard = 0;
+                                                Toast.makeText(MainActivity.this, "Game Over", Toast.LENGTH_SHORT).show();
+                                            }
+                                        });
+                                    }
+
+                                }
+                            });
+
+
+                        }
+
+                        if (newRand[0] == 1) {
+                            zeroZero.setBackgroundColor(getResources().getColor(R.color.zeroZeroColor));
+                            zeroOne.setBackgroundColor(getResources().getColor(R.color.grayColor));
+                            oneZero.setBackgroundColor(getResources().getColor(R.color.oneZeroColor));
+                            oneOne.setBackgroundColor(getResources().getColor(R.color.oneOneColor));
+
+
+                            runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+
+
+                                    zeroZero.setOnClickListener(new View.OnClickListener() {
+                                        @Override
+                                        public void onClick(View v) {
+                                            activeStatus = false;
+                                            score.setText("Game Over - Your Score was : " + scoreCard);
+
+                                            showDialog("Your Score was : " + scoreCard);
+
+                                            timer.cancel();
+                                            scoreCard = 0;
+                                            Toast.makeText(MainActivity.this, "Game Over", Toast.LENGTH_SHORT).show();
+                                        }
+                                    });
+                                    zeroOne.setOnClickListener(new View.OnClickListener() {
+                                        @Override
+                                        public void onClick(View v) {
+
+                                            zeroZero.setBackgroundColor(getResources().getColor(R.color.zeroZeroColor));
+                                            zeroOne.setBackgroundColor(getResources().getColor(R.color.zeroOneColor));
+                                            oneZero.setBackgroundColor(getResources().getColor(R.color.oneZeroColor));
+                                            oneOne.setBackgroundColor(getResources().getColor(R.color.oneOneColor));
+
+
+//                                        Toast.makeText(MainActivity.this, "Good", Toast.LENGTH_SHORT).show();
+                                            scoreCard = scoreCard + 1;
+                                            score.setText("Score : " + scoreCard);
+
+//                                            myScore[0] = ++scoreCard;
+//                                            score.setText("Score : " + myScore[0]);
+
+                                        }
+                                    });
+                                    oneZero.setOnClickListener(new View.OnClickListener() {
+                                        @Override
+                                        public void onClick(View v) {
+                                            activeStatus = false;
+                                            score.setText("Game Over - Your Score was : " + scoreCard);
+
+                                            showDialog("Your Score was : " + scoreCard);
+
+                                            timer.cancel();
+                                            scoreCard = 0;
+                                            Toast.makeText(MainActivity.this, "Game Over", Toast.LENGTH_SHORT).show();
+                                        }
+                                    });
+                                    oneOne.setOnClickListener(new View.OnClickListener() {
+                                        @Override
+                                        public void onClick(View v) {
+                                            activeStatus = false;
+                                            score.setText("Game Over - Your Score was : " + scoreCard);
+
+                                            showDialog("Your Score was : " + scoreCard);
+
+                                            timer.cancel();
+                                            scoreCard = 0;
+                                            Toast.makeText(MainActivity.this, "Game Over", Toast.LENGTH_SHORT).show();
+                                        }
+                                    });
+
+
+                                }
+                            });
+
+
+                        }
+
+                        if (newRand[0] == 2) {
+                            zeroZero.setBackgroundColor(getResources().getColor(R.color.zeroZeroColor));
+                            zeroOne.setBackgroundColor(getResources().getColor(R.color.zeroOneColor));
+                            oneZero.setBackgroundColor(getResources().getColor(R.color.grayColor));
+                            oneOne.setBackgroundColor(getResources().getColor(R.color.oneOneColor));
+
+
+                            runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    zeroZero.setOnClickListener(new View.OnClickListener() {
+                                        @Override
+                                        public void onClick(View v) {
+                                            activeStatus = false;
+                                            score.setText("Game Over - Your Score was : " + scoreCard);
+
+                                            showDialog("Your Score was : " + scoreCard);
+
+                                            timer.cancel();
+                                            scoreCard = 0;
+                                            Toast.makeText(MainActivity.this, "Game Over", Toast.LENGTH_SHORT).show();
+                                        }
+                                    });
+                                    zeroOne.setOnClickListener(new View.OnClickListener() {
+                                        @Override
+                                        public void onClick(View v) {
+                                            activeStatus = false;
+                                            score.setText("Game Over - Your Score was : " + scoreCard);
+
+                                            showDialog("Your Score was : " + scoreCard);
+
+                                            timer.cancel();
+                                            scoreCard = 0;
+                                            Toast.makeText(MainActivity.this, "Game Over", Toast.LENGTH_SHORT).show();
+                                        }
+                                    });
+                                    oneZero.setOnClickListener(new View.OnClickListener() {
+                                        @Override
+                                        public void onClick(View v) {
+
+                                            zeroZero.setBackgroundColor(getResources().getColor(R.color.zeroZeroColor));
+                                            zeroOne.setBackgroundColor(getResources().getColor(R.color.zeroOneColor));
+                                            oneZero.setBackgroundColor(getResources().getColor(R.color.oneZeroColor));
+                                            oneOne.setBackgroundColor(getResources().getColor(R.color.oneOneColor));
+
+
+//                                        Toast.makeText(MainActivity.this, "Good", Toast.LENGTH_SHORT).show();
+                                            scoreCard = scoreCard + 1;
+                                            score.setText("Score : " + scoreCard);
+
+//                                            myScore[0] = ++scoreCard;
+//                                            score.setText("Score : " + myScore[0]);
+                                        }
+                                    });
+                                    oneOne.setOnClickListener(new View.OnClickListener() {
+                                        @Override
+                                        public void onClick(View v) {
+                                            activeStatus = false;
+                                            score.setText("Game Over - Your Score was : " + scoreCard);
+
+                                            showDialog("Your Score was : " + scoreCard);
+
+                                            timer.cancel();
+                                            scoreCard = 0;
+                                            Toast.makeText(MainActivity.this, "Game Over", Toast.LENGTH_SHORT).show();
+                                        }
+                                    });
+
+
+                                }
+                            });
+
+
+                        }
+
+                        if (newRand[0] == 3) {
+                            zeroOne.setBackgroundColor(getResources().getColor(R.color.zeroOneColor));
+                            zeroZero.setBackgroundColor(getResources().getColor(R.color.zeroZeroColor));
+                            oneZero.setBackgroundColor(getResources().getColor(R.color.oneZeroColor));
+                            oneOne.setBackgroundColor(getResources().getColor(R.color.grayColor));
+
+
+                            runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    zeroZero.setOnClickListener(new View.OnClickListener() {
+                                        @Override
+                                        public void onClick(View v) {
+                                            activeStatus = false;
+                                            score.setText("Game Over - Your Score was : " + scoreCard);
+
+                                            showDialog("Your Score was : " + scoreCard);
+
+                                            timer.cancel();
+                                            scoreCard = 0;
+                                            Toast.makeText(MainActivity.this, "Game Over", Toast.LENGTH_SHORT).show();
+                                        }
+                                    });
+                                    zeroOne.setOnClickListener(new View.OnClickListener() {
+                                        @Override
+                                        public void onClick(View v) {
+                                            activeStatus = false;
+                                            score.setText("Game Over - Your Score was : " + scoreCard);
+
+                                            showDialog("Your Score was : " + scoreCard);
+
+                                            timer.cancel();
+                                            scoreCard = 0;
+                                            Toast.makeText(MainActivity.this, "Game Over", Toast.LENGTH_SHORT).show();
+                                        }
+                                    });
+                                    oneZero.setOnClickListener(new View.OnClickListener() {
+                                        @Override
+                                        public void onClick(View v) {
+                                            activeStatus = false;
+                                            score.setText("Game Over - Your Score was : " + scoreCard);
+
+                                            showDialog("Your Score was : " + scoreCard);
+
+
+                                            timer.cancel();
+                                            scoreCard = 0;
+                                            Toast.makeText(MainActivity.this, "Game Over", Toast.LENGTH_SHORT).show();
+                                        }
+                                    });
+                                    oneOne.setOnClickListener(new View.OnClickListener() {
+                                        @Override
+                                        public void onClick(View v) {
+
+                                            zeroZero.setBackgroundColor(getResources().getColor(R.color.zeroZeroColor));
+                                            zeroOne.setBackgroundColor(getResources().getColor(R.color.zeroOneColor));
+                                            oneZero.setBackgroundColor(getResources().getColor(R.color.oneZeroColor));
+                                            oneOne.setBackgroundColor(getResources().getColor(R.color.oneOneColor));
+
+
+//                                        Toast.makeText(MainActivity.this, "Good", Toast.LENGTH_SHORT).show();
+                                            scoreCard = scoreCard + 1;
+                                            score.setText("Score : " + scoreCard);
+
+//                                            myScore[0] = ++scoreCard;
+//                                            score.setText("Score : " + myScore[0]);
+
+                                        }
+                                    });
+
+
+                                }
+                            });
+
+                        }
+
+                    }
+                }
+            }, 0, 1000);
+
+
+        }
+
+        activeStatus = true;
+
+
+    }
+
+    private void startGame4(boolean status) {
 
 
         final int[] rand = new int[1];
